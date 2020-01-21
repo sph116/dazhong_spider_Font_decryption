@@ -100,7 +100,7 @@ def get_list_page(keywords):
                                 'Recommended': Recommended,
                                 'Comment_number': Comment_number
                             })
-                        Mysql.save_url(save_dates=save_data, table="haidilao_data_v2", url=url)   # 存储店铺详情信息
+                        # 自行入库
                         break
 
                     elif rep.status_code == 404:  # 网址错误 退出
