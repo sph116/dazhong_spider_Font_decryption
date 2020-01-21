@@ -12,7 +12,7 @@ class Font_Decryption():
     """
     字库替换 模块
     """
-    def __init__(self, css_url, redis_host='localhost', redis_port=6379, redis_pass="qq1362441", db=3):
+    def __init__(self, css_url, redis_host='你的主机', redis_port=端口, redis_pass="你的密码", db=你的数据库):
         """
         redis 默认链接本机
         :param redis_host: redis 链接地址
