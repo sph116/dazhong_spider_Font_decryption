@@ -3,7 +3,7 @@ from lxml import etree
 import time
 import random
 import re
-from Font_decryption_demo import Font_Decryption
+from Font_decryption import Font_Decryption
 import json
 import threading
 from ip_pool import Ip_pool, stop_ip_pool, get_ip
@@ -21,8 +21,7 @@ ua = [
 
 headers = {
     'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36",
-    "Cookie": "_lxsdk_cuid=16ddc82c62cc8-0c2da24cdecceb-7373e61-15f900-16ddc82c62dc8; _lxsdk=16ddc82c62cc8-0c2da24cdecceb-7373e61-15f900-16ddc82c62dc8; _hc.v=63c163cf-d75d-89b9-0dc1-74a9b2026548.1571362621; ua=sph; ctu=cdff7056daa2405159990763801b14e0b74443eb8302ce0928ea5e3d95696905; s_ViewType=10; aburl=1; _dp.ac.v=da84abba-5c47-4040-ac30-40e09e04162f; _lx_utm=utm_source%3DBaidu%26utm_medium%3Dorganic; dper=ae518422253841cb8382badd9f84a3d4d1cab3368f96b8b833d0ed54b7ba5ec5e1f19bb70643b83040755a6bae10220d2f115c21ad91fdcb6575b68e18fa5b10f94dd03ce59e7626eda956281deb519384ef81d07a0efea07928db045089bc94; ll=7fd06e815b796be3df069dec7836c3df; uamo=15292060685; cy=1; cye=shanghai; _lxsdk_s=16dfb55a64d-2d3-ea9-574%7C%7C121",
-
+    "Cookie": "你的cookie"
     'Host': 'www.dianping.com',
 }
 
@@ -41,11 +40,11 @@ def get_list_page(keywords):
             retry_times = 1  # 重试次数
             while retry_times < 5:  # 最多三次重试
                 try:
-                    proxy = get_ip()  # 获取ip
+#                     proxy = get_ip()  # 获取ip  
                     # headers["User-Agent"] = random.choice(ua)
                     # print(headers["User-Agent"])
                     url = "http://www.dianping.com/search/keyword/{}/10_{}/p{}".format(place, keywords, i)
-                    rep = requests.get(url=url, headers=headers, proxies=proxy, timeout=20)    # 每次使用代理请求
+                    rep = requests.get(url=url, headers=headers, timeout=20)    # 每次使用代理请求
                     time.sleep(random.uniform(6, 20))                                          # 每次请求随机休眠时间
                     if rep.status_code == 200:
                         Text = rep.text
@@ -125,12 +124,12 @@ def get_list_page(keywords):
 
 if __name__ == "__main__":
     """为ip池构造线程"""
-    t = threading.Thread(target=Ip_pool, args=())
-    t.start()
-    time.sleep(3)
+#     t = threading.Thread(target=Ip_pool, args=())
+#     t.start()
+#     time.sleep(3)
 
     get_list_page("%E6%B5%B7%E5%BA%95%E6%8D%9E") # 启动列表页采集
-    stop_ip_pool()   # 采集结束 停止维护ip池
+#     stop_ip_pool()   # 采集结束 停止维护ip池
 
 
 
