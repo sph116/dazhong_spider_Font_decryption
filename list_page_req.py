@@ -6,7 +6,7 @@ import re
 from Font_decryption import Font_Decryption
 import json
 import threading
-from ip_pool import Ip_pool, stop_ip_pool, get_ip
+# from ip_pool import Ip_pool, stop_ip_pool, get_ip
 from mysql_model import Mysql
 from fake_useragent import UserAgent
 # ua = UserAgent()
